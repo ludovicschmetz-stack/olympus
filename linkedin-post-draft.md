@@ -36,7 +36,7 @@ Pas un framework. Pas un SaaS. Pas de code à maintenir.
 
 Juste des prompts de qualité professionnelle, un workflow Kanban éprouvé, et une méthodologie de vibe coding structurée — le tout natif Claude Code.
 
-Inspiré par le travail de Bernard Lambeau sur le langage Elo (qui a fait le tour du web tech ce mois-ci), mais packagé pour être réutilisable sur n'importe quel projet.
+L'idée m'est venue en observant les limites du vibe coding : le code généré fonctionne, mais accumule de la dette technique invisible. Alors j'ai packagé 20 ans d'expérience en code review dans 4 agents IA spécialisés, réutilisables sur n'importe quel projet.
 
 Le résultat sur un vrai bout de code :
 

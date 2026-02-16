@@ -2,7 +2,7 @@
 
 **A divine council of AI agents reviewing every line of your code.**
 
-Olympus is a ready-to-use methodology kit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that brings structured, multi-agent code review to your vibe coding workflow. Inspired by [Bernard Lambeau's approach](https://elo-lang.org) to building the Elo programming language with Claude Code.
+Olympus is a ready-to-use methodology kit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that brings structured, multi-agent code review to your vibe coding workflow. Born from 20 years of code review experience across regulated industries, packaged as reusable AI agents.
 
 No framework. No dependencies. No code to maintain.
 Just battle-tested prompts, a proven workflow, and 4 divine reviewers.
@@ -151,7 +151,7 @@ your-project/
 
 ## 🎮 Three Modes of Operation
 
-Following Bernard Lambeau's proven methodology:
+A proven methodology for AI-assisted development:
 
 | Mode | When | How |
 |------|------|-----|
@@ -243,7 +243,6 @@ Include the Pantheon review summary in your delivery documentation to demonstrat
 
 ## 📖 References
 
-- [Bernard Lambeau's Elo project](https://elo-lang.org/blog/20241225-building-elo-with-claude/)
 - [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Claude Code subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 - [VoltAgent awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
