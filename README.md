@@ -22,46 +22,102 @@ Each agent runs in its own isolated context window, with read-only tool access �
 
 ---
 
-## 🚀 Quick Start
-
-### 1. Clone into your project
+## 🚀 Quick Start — New Project
 
 ```bash
-# Option A: Clone as a new project
 git clone https://github.com/ludovicschmetz-stack/olympus.git my-project
 cd my-project
 ./init.sh --template data-platform --name "My Project"
+```
 
-# Option B: Add to an existing project
+Then edit `CLAUDE.md` to describe your architecture and domain vocabulary.
+
+---
+
+## 🔌 Quick Start — Existing Project
+
+Already have a codebase? Add Olympus in 3 steps:
+
+```bash
+# 1. Clone Olympus to a temp directory
 git clone https://github.com/ludovicschmetz-stack/olympus.git /tmp/olympus
-cp -r /tmp/olympus/.claude /tmp/olympus/tasks /tmp/olympus/CLAUDE.md .
+
+# 2. Copy everything you need into your project
+cd /path/to/your-project
+cp -r /tmp/olympus/.claude .
+cp -r /tmp/olympus/tasks .
+cp -r /tmp/olympus/templates .
+cp -r /tmp/olympus/reviews .
+cp /tmp/olympus/CLAUDE.md .
+cp /tmp/olympus/init.sh .
+
+# 3. Initialize with a template
+chmod +x init.sh
+./init.sh --template data-platform --name "My Project"
+
+# Clean up
 rm -rf /tmp/olympus
 ```
 
-### 2. Customize CLAUDE.md
+Available templates: `data-platform`, `web-api`, `dbt-project`, `generic`
 
-Edit `CLAUDE.md` at your project root to describe your architecture, stack, and conventions. Use one of the provided templates in `templates/` as a starting point.
+Then customize `CLAUDE.md` — replace the placeholders with your actual architecture, tech stack, and domain vocabulary. The template gives you the structure; you fill in the specifics.
 
-### 3. Start working with Claude Code
+---
+
+## 🏛️ Running a Pantheon Review
+
+Start Claude Code in your project directory:
 
 ```bash
+cd /path/to/your-project
 claude
-> Read CLAUDE.md and available agents.
-> Then pick the first task in tasks/to-do/ and implement it.
 ```
 
-Claude Code will automatically:
-- Load your project context from `CLAUDE.md`
-- Discover agents in `.claude/agents/`
-- Invoke the Pantheon for review after each implementation
-- Report findings with severity and fix suggestions
+Then ask for a review:
+
+```
+Run a Pantheon review on src/my_file.py
+```
+
+Claude Code will invoke all 4 agents and produce a report with:
+- Findings per agent (CRITICAL / WARNING / INFO)
+- Concrete fix suggestions
+- A global score out of 100
+- A verdict (Approved / Reservations / Needs work / Rejected)
+
+### Save a review
+
+```
+Save the last Pantheon review to reviews/my_file-review.md
+```
+
+All reviews are saved in the `reviews/` directory for traceability.
+
+### Review a whole module
+
+```
+Run a Pantheon review on all Python files in declarative_dags/components/
+```
+
+---
+
+## 📤 Sharing Reviews
+
+Pantheon reviews are designed to be shared with teammates or clients.
+
+**With a teammate**: Send the `.md` file from `reviews/` via Slack, Teams, or email. The report is self-contained — the reader doesn't need Claude Code or Olympus to understand the findings.
+
+**With a client**: Include the review in your delivery documentation. The score and verdict provide an objective quality indicator.
+
+**In a PR**: Copy the review content as a PR comment, or configure a CI step to run the Council automatically (see Roadmap).
 
 ---
 
 ## 📂 Project Structure
 
 ```
-olympus/
+your-project/
 ├── CLAUDE.md                          # Project context (customize this)
 ├── .claude/
 │   ├── agents/
@@ -80,6 +136,7 @@ olympus/
 │   ├── hold-on/
 │   ├── analyze/
 │   └── done/
+├── reviews/                           # Pantheon review reports
 ├── templates/                         # Pre-built CLAUDE.md templates
 │   ├── data-platform.md
 │   ├── web-api.md
@@ -171,6 +228,16 @@ Olympus is designed to be part of your professional delivery:
 > *"Every deliverable passes through a multi-agent review covering security (OWASP), domain consistency (DDD), edge cases, and complexity analysis. Clients receive a quality report with each delivery."*
 
 Include the Pantheon review summary in your delivery documentation to demonstrate engineering rigor.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] GitHub Action — run Pantheon review on every PR automatically
+- [ ] Quality dashboard — track scores over time
+- [ ] New agents — Performance, Testing, Accessibility
+- [ ] Community templates gallery
+- [ ] Documentation site (GitHub Pages)
 
 ---
 

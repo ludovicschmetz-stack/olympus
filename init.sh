@@ -52,6 +52,13 @@ if [[ -z "$PROJECT_NAME" ]]; then
 fi
 
 TEMPLATE_FILE="$TEMPLATES_DIR/$TEMPLATE.md"
+if [[ ! -d "$TEMPLATES_DIR" ]]; then
+    echo -e "${RED}Error: templates/ directory not found${NC}"
+    echo -e "If you added Olympus to an existing project, make sure you copied the templates directory:"
+    echo -e "  ${CYAN}cp -r /tmp/olympus/templates .${NC}"
+    exit 1
+fi
+
 if [[ ! -f "$TEMPLATE_FILE" ]]; then
     echo -e "${RED}Error: Template '$TEMPLATE' not found${NC}"
     echo "Available templates:"
@@ -69,6 +76,11 @@ echo ""
 # Apply template to CLAUDE.md
 echo -e "${YELLOW}→ Applying template to CLAUDE.md...${NC}"
 sed "s/{PROJECT_NAME}/$PROJECT_NAME/g" "$TEMPLATE_FILE" > "$SCRIPT_DIR/CLAUDE.md"
+
+# Create reviews directory
+mkdir -p "$SCRIPT_DIR/reviews"
+touch "$SCRIPT_DIR/reviews/.gitkeep"
+echo -e "${YELLOW}→ Created reviews/ directory${NC}"
 
 # Create first example task
 FIRST_TASK="$SCRIPT_DIR/tasks/to-do/001-project-setup.md"
@@ -128,6 +140,7 @@ check "$SCRIPT_DIR/tasks/in-progress" "Kanban: in-progress"
 check "$SCRIPT_DIR/tasks/hold-on" "Kanban: hold-on"
 check "$SCRIPT_DIR/tasks/analyze" "Kanban: analyze"
 check "$SCRIPT_DIR/tasks/done" "Kanban: done"
+check "$SCRIPT_DIR/reviews" "Reviews directory"
 
 echo ""
 echo -e "${GREEN}✅ Olympus initialized ($CHECKS_PASSED/$CHECKS_TOTAL checks passed)${NC}"
