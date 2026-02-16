@@ -1,0 +1,20 @@
+services:
+  sandbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount project root as workspace (read-write)
+      - ../../:/workspace
+    working_dir: /workspace
+    # No network access by default for safety
+    network_mode: none
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true

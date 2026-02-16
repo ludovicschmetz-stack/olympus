@@ -1,0 +1,58 @@
+# License — Olympus Agent Definitions
+
+## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+## (CC BY-NC-SA 4.0)
+
+Copyright (c) 2026 Ludovic Schmetz
+
+The agent definitions in this directory (athena.md, hermes.md, cassandra.md,
+apollo.md, council.md, and any future agent files) are licensed under the
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+### You are free to:
+
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material
+
+### Under the following terms:
+
+- **Attribution** — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made.
+
+- **NonCommercial** — You may NOT use the material for commercial purposes.
+  This includes but is not limited to:
+  - Selling the agents or derivatives as a product or service
+  - Including the agents in a paid consulting offering
+  - Bundling the agents in a commercial tool or SaaS
+  - Using the agents in a commercial code review service
+
+- **ShareAlike** — If you remix, transform, or build upon the material, you
+  must distribute your contributions under the same license.
+
+### Commercial licensing
+
+For commercial use (including use in freelance/consulting deliveries, SaaS
+products, or enterprise tooling), contact:
+
+  ludovic.schmetz@gmail.com
+
+Commercial licenses are available at reasonable rates.
+
+### Full license text
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+### What this means in practice
+
+| Use case | Allowed? |
+|----------|----------|
+| Personal projects | ✅ Yes |
+| Learning and education | ✅ Yes |
+| Open source projects (non-commercial) | ✅ Yes |
+| Blog posts and tutorials (with attribution) | ✅ Yes |
+| Internal use at your company | ❌ No (commercial) |
+| Freelance delivery to a client | ❌ No (commercial) |
+| Including in a paid product | ❌ No (commercial) |
+| Forking and selling as your own | ❌ No (commercial + attribution) |
+
+For any use marked ❌, contact ludovic.schmetz@gmail.com for a commercial license.
