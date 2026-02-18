@@ -1,84 +1,84 @@
-# Post LinkedIn — Olympus Launch
+# LinkedIn Post — Olympus Launch
 
-> **Instructions** : Copier-coller le texte ci-dessous directement dans LinkedIn.
-> Ajouter une image ou un screenshot du terminal montrant le Council review.
-> Poster un mardi ou mercredi entre 8h et 9h30 CET pour max de reach.
+> **Instructions**: Copy-paste the text below directly into LinkedIn.
+> Attach a screenshot of the terminal showing a Council review output.
+> Post on a Tuesday or Wednesday between 8:00 and 9:30 AM CET for max reach.
 
 ---
 
-J'ai passé 20 ans à reviewer du code.
+I've spent 20 years reviewing code.
 
-En banque, en assurance, en télécom, en énergie — dans des environnements où un bug en production peut coûter des millions.
+Banking. Insurance. Telecom. Energy. The kind of environments where a production bug can cost millions.
 
-Et je me suis rendu compte d'un truc : les meilleurs reviewers ne sont pas ceux qui trouvent le plus de bugs.
+And here's what I've learned: the best reviewers aren't the ones who find the most bugs.
 
-Ce sont ceux qui regardent le code sous des angles différents.
+They're the ones who look at code from completely different angles.
 
-Le gars sécurité voit l'injection SQL que personne n'a remarqué.
-Le DDD purist voit que "account" et "customer" sont utilisés comme synonymes alors que le métier les distingue.
-Le vieux de la vieille voit le edge case du 29 février qui va péter dans 4 ans.
-Le pragmatique voit la classe de 400 lignes qu'on pourrait réduire à 40.
+The security guy spots the SQL injection nobody else noticed.
+The DDD purist catches that "account" and "customer" are used interchangeably — while the business treats them as very different things.
+The battle-scarred veteran sees the February 29th edge case that'll blow up in 4 years.
+The pragmatist sees the 400-line class that could be 40.
 
-4 cerveaux. 4 angles. 4 filtres différents.
+4 brains. 4 angles. 4 different filters.
 
-Le problème ? Avoir 4 seniors disponibles pour chaque review, c'est un luxe que personne ne peut se payer.
+The problem? Having 4 senior engineers available for every review is a luxury nobody can afford.
 
-Alors j'ai créé Olympus.
+So I built Olympus.
 
-4 agents IA spécialisés qui reviewent chaque modification de code :
+4 specialized AI agents that review every piece of code you write:
 
-🛡️ Athena — Sécurité (OWASP, injection, secrets, auth)
-📐 Hermes — Domain-Driven Design (vocabulaire métier, bounded contexts)
-🔮 Cassandra — Edge cases (ce qui va péter en prod)
-☀️ Apollo — Simplicité (complexité cyclomatique, over-engineering)
+🛡️ Athena — Security (OWASP, injection, secrets, broken auth)
+📐 Hermes — Domain-Driven Design (ubiquitous language, bounded contexts)
+🔮 Cassandra — Edge Cases (the things that blow up in production)
+☀️ Apollo — Simplicity (cyclomatic complexity, over-engineering)
 
-Pas un framework. Pas un SaaS. Pas de code à maintenir.
+Not a framework. Not a SaaS. No code to maintain.
 
-Juste des prompts de qualité professionnelle, un workflow Kanban éprouvé, et une méthodologie de vibe coding structurée — le tout natif Claude Code.
+Just professional-grade prompts, a battle-tested Kanban workflow, and structured vibe coding — all native to Claude Code.
 
-L'idée m'est venue en observant les limites du vibe coding : le code généré fonctionne, mais accumule de la dette technique invisible. Alors j'ai packagé 20 ans d'expérience en code review dans 4 agents IA spécialisés, réutilisables sur n'importe quel projet.
-
-Le résultat sur un vrai bout de code :
+Here's what it looks like on real code:
 
 ```
 ⚡ Olympus Council Review
 Score: 35/100 — Verdict: ❌ Rejected
 
-🛡️ Athena: CRITICAL — SQL injection via f-string (ligne 23)
-🔮 Cassandra: CRITICAL — Aucune gestion du cas API timeout
-📐 Hermes: WARNING — "data_point" ≠ vocabulaire métier établi
-☀️ Apollo: WARNING — Fonction de 78 lignes, 5 niveaux d'imbrication
+🛡️ Athena: CRITICAL — SQL injection via f-string (line 23)
+🔮 Cassandra: CRITICAL — No handling for API timeout
+📐 Hermes: WARNING — "data_point" doesn't match established domain vocabulary
+☀️ Apollo: WARNING — 78-line function, 5 levels of nesting
 ```
 
-3 minutes. 4 angles. Zéro complaisance.
+3 minutes. 4 angles. Zero complacency.
 
-Le repo est open source (structure MIT, agents CC BY-NC-SA).
+The idea came from watching vibe coding in action: the generated code works, but silently piles up technical debt. So I packaged 20 years of code review experience into 4 reusable AI agents that work on any project.
 
-Lien en commentaire 👇
+The repo is open source (MIT structure, CC BY-NC-SA agents).
 
----
-
-Si vous êtes data engineer, architecte, ou dev senior et que vous utilisez Claude Code / Cursor pour du vibe coding — essayez-le et dites-moi ce que vous en pensez.
-
-Et si vous livrez du code à des clients : imaginez inclure ce rapport de qualité dans chaque delivery.
-
-C'est exactement ce que je fais.
-
-#ClaudeCode #VibeCoding #CodeReview #DataEngineering #AI #Freelance #OpenSource
+Link in comments 👇
 
 ---
 
-> **Premier commentaire à poster immédiatement après publication** :
+If you're a data engineer, architect, or senior dev using Claude Code for vibe coding — give it a spin and tell me what you think.
+
+And if you deliver code to clients: imagine attaching this quality report to every delivery.
+
+That's exactly what I do.
+
+#ClaudeCode #VibeCoding #CodeReview #DataEngineering #AI #OpenSource
+
+---
+
+> **First comment to post immediately after publishing**:
 >
-> 🔗 Le repo Olympus : https://github.com/ludovicschmetz-stack/olympus
+> 🔗 The Olympus repo: https://github.com/ludovicschmetz-stack/olympus
 >
-> Pour démarrer en 2 minutes :
+> Get started in 2 minutes:
 > ```
-> git clone https://github.com/ludovicschmetz-stack/olympus.git mon-projet
-> cd mon-projet
-> ./init.sh --template data-platform --name "Mon Projet"
+> git clone https://github.com/ludovicschmetz-stack/olympus.git my-project
+> cd my-project
+> ./init.sh --template data-platform --name "My Project"
 > claude
 > ```
 >
-> Les 4 templates inclus : data-platform, web-api, dbt-project, generic.
-> PRs et feedback bienvenus.
+> 4 templates included: data-platform, web-api, dbt-project, generic.
+> PRs and feedback welcome.
