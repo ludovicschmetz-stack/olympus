@@ -2,7 +2,7 @@
 
 **A divine council of AI agents reviewing every line of your code.**
 
-Olympus is a ready-to-use methodology kit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that brings structured, multi-agent code review to your vibe coding workflow. Born from 20 years of code review experience across regulated industries, packaged as reusable AI agents.
+Olympus is a ready-to-use methodology kit for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that brings structured, multi-agent code review to your vibe coding workflow. Inspired by [Bernard Lambeau's approach](https://elo-lang.org) to building the Elo programming language with Claude Code.
 
 No framework. No dependencies. No code to maintain.
 Just battle-tested prompts, a proven workflow, and 4 divine reviewers.
@@ -22,107 +22,51 @@ Each agent runs in its own isolated context window, with read-only tool access �
 
 ---
 
-## 🚀 Quick Start — New Project
+## 🚀 Quick Start
+
+### 1. Clone into your project
 
 ```bash
+# Option A: Clone as a new project
 git clone https://github.com/ludovicschmetz-stack/olympus.git my-project
 cd my-project
 ./init.sh --template data-platform --name "My Project"
-```
 
-Then edit `CLAUDE.md` to describe your architecture and domain vocabulary.
-
----
-
-## 🔌 Quick Start — Existing Project
-
-Already have a codebase? Add Olympus in 3 steps:
-
-```bash
-# 1. Clone Olympus to a temp directory
+# Option B: Add to an existing project
 git clone https://github.com/ludovicschmetz-stack/olympus.git /tmp/olympus
-
-# 2. Copy everything you need into your project
-cd /path/to/your-project
-cp -r /tmp/olympus/.claude .
-cp -r /tmp/olympus/tasks .
-cp -r /tmp/olympus/templates .
-cp -r /tmp/olympus/reviews .
-cp /tmp/olympus/CLAUDE.md .
-cp /tmp/olympus/init.sh .
-
-# 3. Initialize with a template
-chmod +x init.sh
-./init.sh --template data-platform --name "My Project"
-
-# Clean up
+cp -r /tmp/olympus/.claude /tmp/olympus/tasks /tmp/olympus/CLAUDE.md .
 rm -rf /tmp/olympus
 ```
 
-Available templates: `data-platform`, `web-api`, `dbt-project`, `generic`
+### 2. Customize CLAUDE.md
 
-Then customize `CLAUDE.md` — replace the placeholders with your actual architecture, tech stack, and domain vocabulary. The template gives you the structure; you fill in the specifics.
+Edit `CLAUDE.md` at your project root to describe your architecture, stack, and conventions. Use one of the provided templates in `templates/` as a starting point.
 
----
-
-## 🏛️ Running a Pantheon Review
-
-Start Claude Code in your project directory:
+### 3. Start working with Claude Code
 
 ```bash
-cd /path/to/your-project
 claude
+> Read CLAUDE.md and available agents.
+> Then pick the first task in tasks/to-do/ and implement it.
 ```
 
-Then ask for a review:
-
-```
-Run a Pantheon review on src/my_file.py
-```
-
-Claude Code will invoke all 4 agents and produce a report with:
-- Findings per agent (CRITICAL / WARNING / INFO)
-- Concrete fix suggestions
-- A global score out of 100
-- A verdict (Approved / Reservations / Needs work / Rejected)
-
-### Save a review
-
-```
-Save the last Pantheon review to reviews/my_file-review.md
-```
-
-All reviews are saved in the `reviews/` directory for traceability.
-
-### Review a whole module
-
-```
-Run a Pantheon review on all Python files in declarative_dags/components/
-```
-
----
-
-## 📤 Sharing Reviews
-
-Pantheon reviews are designed to be shared with teammates or clients.
-
-**With a teammate**: Send the `.md` file from `reviews/` via Slack, Teams, or email. The report is self-contained — the reader doesn't need Claude Code or Olympus to understand the findings.
-
-**With a client**: Include the review in your delivery documentation. The score and verdict provide an objective quality indicator.
-
-**In a PR**: Copy the review content as a PR comment, or configure a CI step to run the Council automatically (see Roadmap).
+Claude Code will automatically:
+- Load your project context from `CLAUDE.md`
+- Discover agents in `.claude/agents/`
+- Invoke the Pantheon for review after each implementation
+- Report findings with severity and fix suggestions
 
 ---
 
 ## 📂 Project Structure
 
 ```
-your-project/
+olympus/
 ├── CLAUDE.md                          # Project context (customize this)
 ├── .claude/
 │   ├── agents/
 │   │   ├── athena.md                  # 🛡️ Security auditor
-│   │   ├── hermes.md                  # 📐 DDD guardian
+│   │   ├── hermes.md                  # 📝 DDD guardian
 │   │   ├── cassandra.md               # 🔮 Edge case prophet
 │   │   ├── apollo.md                  # ☀️ Simplicity arbiter
 │   │   └── council.md                 # ⚡ Orchestrator (runs all 4)
@@ -136,7 +80,6 @@ your-project/
 │   ├── hold-on/
 │   ├── analyze/
 │   └── done/
-├── reviews/                           # Pantheon review reports
 ├── templates/                         # Pre-built CLAUDE.md templates
 │   ├── data-platform.md
 │   ├── web-api.md
@@ -151,7 +94,7 @@ your-project/
 
 ## 🎮 Three Modes of Operation
 
-A proven methodology for AI-assisted development:
+Following Bernard Lambeau's proven methodology:
 
 | Mode | When | How |
 |------|------|-----|
@@ -221,6 +164,35 @@ Available templates: `data-platform`, `web-api`, `dbt-project`, `generic`
 
 ---
 
+## ⚔️ Olympus vs Anthropic's Claude Code Review
+
+On March 9, 2026, Anthropic launched [Code Review](https://docs.anthropic.com/en/docs/claude-code/code-review) — a managed, multi-agent PR review service built into Claude Code. Here's how it compares to Olympus.
+
+| | Olympus | Claude Code Review |
+|---|---|---|
+| **What it is** | Open-source methodology kit (prompts + workflow) | Managed SaaS service |
+| **Cost per review** | $0 (uses your existing Claude Code subscription) | $15–25 per PR |
+| **Access** | Any Claude Code user | Team & Enterprise plans only |
+| **Integration** | Manual invocation in Claude Code | Auto-triggers on GitHub PRs |
+| **Review axes** | 4 specialized: Security, DDD, Edge Cases, Complexity | Logic errors + light security |
+| **DDD / Domain review** | Yes (Hermes agent) | No |
+| **Complexity metrics** | Yes (Apollo agent, cyclomatic complexity, nesting) | No dedicated axis |
+| **Scoring** | Deterministic 0–100 with explicit formula | Color-coded severity (red/yellow/purple) |
+| **Customization** | Full — edit any agent prompt, fork, extend | REVIEW.md + CLAUDE.md |
+| **Transparency** | 100% — every prompt is readable and versioned | Black box |
+| **Workflow** | Kanban + 3 interaction modes + Docker sandbox | PR review only |
+| **Setup** | Clone + init.sh (5 min) | Admin toggle per repository |
+
+### When to use which
+
+**Use Claude Code Review if** you're an enterprise team generating high volumes of PRs and want zero-config, automated review on every push. You need GitHub-native integration and don't mind paying per review.
+
+**Use Olympus if** you want full control over what gets reviewed and how, need DDD and complexity analysis, work as a freelancer or small team, or want a complete development methodology — not just a review tool. Olympus agents are educational assets: reading `athena.md` teaches OWASP, reading `hermes.md` teaches DDD.
+
+**Use both** by aligning your `CLAUDE.md` and `REVIEW.md` across both tools. Claude Code Review catches logic errors on every PR automatically; Olympus provides deeper, structured review on milestone deliverables with a quality score you can share with stakeholders.
+
+---
+
 ## 🏗️ For Freelancers
 
 Olympus is designed to be part of your professional delivery:
@@ -231,18 +203,9 @@ Include the Pantheon review summary in your delivery documentation to demonstrat
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] GitHub Action — run Pantheon review on every PR automatically
-- [ ] Quality dashboard — track scores over time
-- [ ] New agents — Performance, Testing, Accessibility
-- [ ] Community templates gallery
-- [ ] Documentation site (GitHub Pages)
-
----
-
 ## 📖 References
 
+- [Bernard Lambeau's Elo project](https://elo-lang.org/blog/20241225-building-elo-with-claude/)
 - [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Claude Code subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 - [VoltAgent awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
@@ -251,15 +214,4 @@ Include the Pantheon review summary in your delivery documentation to demonstrat
 
 ## License
 
-This project uses **dual licensing**:
-
-| Component | License | Scope |
-|-----------|---------|-------|
-| Structure, scripts, templates, docs | **MIT** | `init.sh`, `templates/`, `tasks/`, `README.md`, `Dockerfile`, etc. |
-| Agent definitions (the prompts) | **CC BY-NC-SA 4.0** | `.claude/agents/*.md` |
-
-**In plain terms:**
-- The project scaffolding is fully open — fork it, use it, sell it, whatever.
-- The agent prompts (Athena, Hermes, Cassandra, Apollo, Council) are free for personal and educational use, but require a commercial license for business use (freelance delivery, SaaS, consulting).
-
-See [LICENSE](LICENSE) and [.claude/agents/LICENSE](.claude/agents/LICENSE) for details.
+MIT — See [LICENSE](LICENSE)
